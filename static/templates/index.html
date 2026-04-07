@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Tracking</title>
+</head>
+<body>
+<h2>Live Bus Tracking</h2>
+
+<button onclick="getLocation()">Track Bus</button>
+
+<p id="output"></p>
+
+<script>
+function getLocation() {
+    fetch('/get_location')
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+        "Bus ID: " + data.bus_id +
+        "<br>Latitude: " + data.lat +
+        "<br>Longitude: " + data.lon +
+        "<br>Speed: " + data.speed + " km/h";
+    });
+}
+</script>
+
+</body>
+</html>
